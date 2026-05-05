@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  namenode:
+    image: apache/hadoop:3.3.6
+    hostname: namenode
+    command: ["hdfs", "namenode"]
+    ports:
+      - "9870:9870"    # NameNode Web UI
+      - "8020:8020"    # NameNode RPC
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+      ENSURE_NAMENODE_DIR: /hadoop/dfs/name
+    volumes:
+      - ./hadoop-conf:/etc/hadoop
+      - namenode-data:/hadoop/dfs/name
+
+  datanode:
+    image: apache/hadoop:3.3.6
+    hostname: datanode
+    command: ["hdfs", "datanode"]
+    ports:
+      - "9866:9866"    # DataNode data transfer port
+      - "9864:9864"    # DataNode Web UI
+    environment:
+      HADOOP_CONF_DIR: /etc/hadoop
+    volumes:
+      - ./hadoop-conf:/etc/hadoop
+      - datanode-data:/hadoop/dfs/data
+    depends_on:
+      - namenode
+
+volumes:
+  namenode-data:
+  datanode-data:

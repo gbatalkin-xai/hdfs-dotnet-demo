@@ -1,0 +1,56 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.
+ * Trimmed to only the RPCs needed by Gtlm.Hdfs.Client.
+ */
+syntax="proto2";
+option java_package = "org.apache.hadoop.hdfs.protocol.proto";
+option java_outer_classname = "ClientNamenodeProtocolProtos";
+option java_generate_equals_and_hash = true;
+option csharp_namespace = "Gtlm.Hdfs.Client.Proto";
+package hadoop.hdfs;
+
+import "hdfs.proto";
+
+message GetBlockLocationsRequestProto {
+  required string src = 1;
+  required uint64 offset = 2;
+  required uint64 length = 3;
+}
+
+message GetBlockLocationsResponseProto {
+  optional LocatedBlocksProto locations = 1;
+}
+
+message GetServerDefaultsRequestProto {
+}
+
+message GetServerDefaultsResponseProto {
+  required FsServerDefaultsProto serverDefaults = 1;
+}
+
+message GetFileInfoRequestProto {
+  required string src = 1;
+}
+
+message GetFileInfoResponseProto {
+  optional HdfsFileStatusProto fs = 1;
+}
+
+message GetListingRequestProto {
+  required string src = 1;
+  required bytes startAfter = 2;
+  required bool needLocation = 3;
+}
+
+message GetListingResponseProto {
+  optional DirectoryListingProto dirList = 1;
+}
+
+message RenewLeaseRequestProto {
+  required string clientName = 1;
+  repeated string namespaces = 2;
+}
+
+message RenewLeaseResponseProto {
+}

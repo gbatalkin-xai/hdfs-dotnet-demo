@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/Gtlm.Hdfs.Client.Benchmarks/Gtlm.Hdfs.Client.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Gtlm.Hdfs.Client/Gtlm.Hdfs.Client.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Gtlm.Hdfs.Client.Tests/Gtlm.Hdfs.Client.Tests.csproj" />
+  </Folder>
+</Solution>
